@@ -48,7 +48,7 @@ Clone repo to your desktop
 You will always run commands from the \\oas-apiproxy-gen\\src\\specToProxy
 folder.
 
-1.  ./proxytobuild.sh
+1.  ./proxybuild.sh
 
 2.  node main.js
 
@@ -143,8 +143,7 @@ from the templates folder**
 "basepath": "gen-httpbin",
 
 "urltarget": "https://httpbin.org", **variable urltarget in the template files
-will be replaced with this value and the generated proxy is stored in the
-gateway folder**
+will be replaced with this value**
 
 "openapispecfile": "httpbin.yaml" **openApi spec file is read from the specs
 folder**
@@ -296,7 +295,7 @@ Change to directory **specToProxy**
 
 **src/specToProxy\$ ./proxybuild.sh**
 
->   Start: /mnt/c/Users/mhash/Documents/apigeeWS/apigeeWS/src/specToProxy
+>   Start: /mnt/c/Users/abcd/Documents/apigeeWS/apigeeWS/src/specToProxy
 
 >   ProxyName: petStore \| TemplateName: Template-V3-fh-sec-rt-eh
 
