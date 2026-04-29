@@ -1,5 +1,8 @@
 ## Apigee API Proxy Generation based on Templates
 
+<<<<<<< HEAD
+## Apigee API Proxy Generation based on Templates
+
 - [To install](#to-install)
 - [Prerequisite & Versions](#prerequisite-versions)
 
@@ -10,6 +13,18 @@
   - [Template Files](#template-files)
   - [Specs folder](#specs-folder)
 
+=======
+- [To install](#to-install)
+- [Prerequisite & Versions](#prerequisite-versions)
+
+### Project Structure
+- [Paths](#paths)
+- [Input files](#input-files)
+  - [proxytobuild.json](#proxytobuild.json)
+  - [Template Files](#template-files)
+  - [Specs folder](#specs-folder)
+
+>>>>>>> 9df7e25d9482cc88070024977a2caede99f0c6e1
 ### Execution
 - [To run in WSL](#to-run-in-wsl)
 

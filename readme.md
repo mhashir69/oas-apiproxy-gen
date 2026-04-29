@@ -1,24 +1,20 @@
 Apigee API Proxy Generation based on templates
 ==============================================
 
-[Apigee API Proxy Generation based on templates
-1](#apigee-api-proxy-generation-based-on-templates)
+## Apigee API Proxy Generation based on Templates
 
-[To install 1](#to-install)
+- [To install](#to-install)
+- [Prerequisite & Versions](#prerequisite-versions)
 
-[Prerequisite & Versions 2](#prerequisite-versions)
+### Project Structure
+- [Paths](#paths)
+- [Input files](#input-files)
+  - [proxytobuild.json](#proxytobuild.json)
+  - [Template Files](#template-files)
+  - [Specs folder](#specs-folder)
 
-[Paths 3](#paths)
-
-[Input files 3](#input-files)
-
-[Proxytobuild.json 3](#proxytobuild.json)
-
-[Template Files 3](#template-files)
-
-[specs folder 6](#specs-folder)
-
-[To run in WSL 6](#to-run-in-wsl)
+### Execution
+- [To run in WSL](#to-run-in-wsl)
 
 In the general case, API Proxies code deployed on the API Platform support the
 non-functional requirements of APIs. These include security , routing,
@@ -30,6 +26,8 @@ This tool generates proxy code using the following inputs:
 (2) a proxy template, and  
 (3) an input JSON message containing values for template variable substitution
 and other metadata such as the proxy name.
+
+ApigeeProxyGeneration.md
 
 ![](media/229d271a98cac429faeac33b0310e309.png)
 
