@@ -31,6 +31,8 @@ This tool generates proxy code using the following inputs:
 (3) an input JSON message containing values for template variable substitution
 and other metadata such as the proxy name.
 
+ApigeeProxyGeneration.md
+
 ![](media/229d271a98cac429faeac33b0310e309.png)
 
 ### To install
