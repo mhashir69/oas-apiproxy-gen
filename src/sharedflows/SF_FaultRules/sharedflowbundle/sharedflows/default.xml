@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>AM-ErrorMsg-LMP</Name>
+        <Condition>(request.verb != "OPTIONS")</Condition>
+        <!--
+        <Condition>(environment.name = "prod" || environment.name = "perf")</Condition>
+        -->
+    </Step>
+    <!--
+    <Step>
+        <Condition>(environment.name = "dev" || environment.name = "test" || environment.name = "int" || environment.name = "uat" ) and (fault.name != "RaiseFault") </Condition>
+        <FaultRules/>
+        <Name>AM-ErrorMsg</Name>
+    </Step>
+    <Step>
+        <Condition>(environment.name = "prod" || environment.name = "perf" ) and (fault.name != "RaiseFault") </Condition>
+        <FaultRules/>
+        <Name>AM-GenericErrorMsg</Name>
+    </Step>
+    -->
+    <!--
+    <Step>
+        <Condition>(environment.name = "dev" || environment.name = "test" || environment.name = "int" || environment.name = "uat" ) and (fault.name = "RaiseFault") and (request.verb != "OPTIONS")</Condition>
+        <FaultRules/>
+        <Name>RaiseFault.Json</Name>
+    </Step>
+    <Step>
+        <Condition>(environment.name = "prod" || environment.name = "perf") and (fault.name = "RaiseFault") and (request.verb != "OPTIONS") </Condition>
+        <FaultRules/>
+        <Name>RaiseFault.Json.Generic</Name>
+    </Step>
+    -->
+    <Step>
+        <Name>OPTIONS-CORS-RequestHeader-Origin</Name>
+        <Condition>(fault.name = "RaiseFault") and (request.verb = "OPTIONS") AND (request.header.origin != null) </Condition>
+    </Step>
+    <Step>
+        <Condition>(fault.name = "RaiseFault") and (request.verb = "OPTIONS") </Condition>
+        <FaultRules/>
+        <Name>RaiseFault.OPTIONS.CORS-Headers-Response</Name>
+    </Step>
+</SharedFlow>

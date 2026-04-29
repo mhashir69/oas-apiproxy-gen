@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ErrorMsg">
+    <DisplayName>AM-ErrorMsg</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
+        <Payload contentType="application/json" variablePrefix="@" variableSuffix="#">
+                 {  
+                "apigee fault": "@fault.name#",
+                "emsg": "@error.message#",
+                "statuscode": "@error.status.code#",
+                "reason": "@error.reason.phrase#",
+                "environment": "@environment.name#",
+                "apiproxy name": "@apiproxy.name#",
+                "apiproxy revision": "@apiproxy.revision#",
+                "apigee flow name": "@current.flow.name#",
+                "request url": "@proxy.url#",
+                "target url": "@target.url#",
+                "response": "@response.content#"
+                }
+            </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="response" transport="http" createNew="false"></AssignTo>
+</AssignMessage>

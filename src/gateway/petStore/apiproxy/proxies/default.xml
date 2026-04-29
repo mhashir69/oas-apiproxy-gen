@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <DefaultFaultRule name="default-fault">
+        <Step>
+            <Name>FC_ErrorHandling</Name>
+        </Step>
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <Flows>
+     <Flow name="put  /pet">
+     <Description>Update an existing pet by Id.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/pet") and (request.verb = "PUT" )</Condition>
+   </Flow>
+     <Flow name="post  /pet">
+     <Description>Add a new pet to the store.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/pet") and (request.verb = "POST" )</Condition>
+   </Flow>
+     <Flow name="get  /pet/findByStatus">
+     <Description>Multiple status values can be provided with comma separated strings.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/pet/findByStatus") and (request.verb = "GET" )</Condition>
+   </Flow>
+     <Flow name="get  /pet/findByTags">
+     <Description>Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/pet/findByTags") and (request.verb = "GET" )</Condition>
+   </Flow>
+     <Flow name="get  /pet/*">
+     <Description>Returns a single pet.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/pet/*") and (request.verb = "GET" )</Condition>
+   </Flow>
+     <Flow name="post  /pet/*">
+     <Description>update a pet via the form data.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/pet/*") and (request.verb = "POST" )</Condition>
+   </Flow>
+     <Flow name="delete  /pet/*">
+     <Description>delete a pet.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/pet/*") and (request.verb = "DELETE" )</Condition>
+   </Flow>
+     <Flow name="post  /pet/*/uploadImage">
+     <Description>Upload an image of pet.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/pet/*/uploadImage") and (request.verb = "POST" )</Condition>
+   </Flow>
+     <Flow name="get  /store/inventory">
+     <Description>Returns a map of status codes to quantities.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/store/inventory") and (request.verb = "GET" )</Condition>
+   </Flow>
+     <Flow name="post  /store/order">
+     <Description>Place a new order in the store.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/store/order") and (request.verb = "POST" )</Condition>
+   </Flow>
+     <Flow name="get  /store/order/*">
+     <Description>For valid response try integer IDs with value &lt;&#x3D; 5 or &gt; 10. Other values will generate exceptions.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/store/order/*") and (request.verb = "GET" )</Condition>
+   </Flow>
+     <Flow name="delete  /store/order/*">
+     <Description>For valid response try integer IDs with value &lt; 1000. Anything above 1000 or non-integers will generate API errors.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/store/order/*") and (request.verb = "DELETE" )</Condition>
+   </Flow>
+     <Flow name="post  /user">
+     <Description>This can only be done by the logged in user.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/user") and (request.verb = "POST" )</Condition>
+   </Flow>
+     <Flow name="post  /user/createWithList">
+     <Description>Creates list of users with given input array.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/user/createWithList") and (request.verb = "POST" )</Condition>
+   </Flow>
+     <Flow name="get  /user/login">
+     <Description>log user into the system.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/user/login") and (request.verb = "GET" )</Condition>
+   </Flow>
+     <Flow name="get  /user/logout">
+     <Description>Log user out of system.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/user/logout") and (request.verb = "GET" )</Condition>
+   </Flow>
+     <Flow name="get  /user/*">
+     <Description>Get user details based on username.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/user/*") and (request.verb = "GET" )</Condition>
+   </Flow>
+     <Flow name="put  /user/*">
+     <Description>This can only be done by the logged in user.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/user/*") and (request.verb = "PUT" )</Condition>
+   </Flow>
+     <Flow name="delete  /user/*">
+     <Description>This can only be done by the logged in user.</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "/user/*") and (request.verb = "DELETE" )</Condition>
+   </Flow>
+	</Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/petstore</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

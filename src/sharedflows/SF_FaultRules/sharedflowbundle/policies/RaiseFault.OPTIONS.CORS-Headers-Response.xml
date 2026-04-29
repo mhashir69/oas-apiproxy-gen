@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.OPTIONS.CORS-Headers-Response">
+    <DisplayName>RaiseFault.OPTIONS.CORS-Headers-Response</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers>
+                <Header name="Access-Control-Allow-Origin">{request.header.origin}</Header>
+                <Header name="Access-Control-Allow-Headers">content-encoding,content-type,cache-control, origin, x-requested-with, accept, Authorization</Header>
+                <!--
+                <Header name="Access-Control-Allow-Headers">content-encoding,content-type,cache-control, origin, x-requested-with, accept, Authorization</Header>
+                <Header name="Access-Control-Request-Headers">content-encoding, content-type,cache-control, origin, x-requested-with, accept, Authorization, X-B3-Flags, x-apikey</Header>
+                <Header name="Access-Control-Request-Headers">*</Header>
+                -->
+                <Header name="Access-Control-Max-Age">1728000</Header>
+                <Header name="Access-Control-Allow-Methods">GET, PUT, POST, PATCH, DELETE</Header>
+            </Headers>
+            <Payload contentType="text/plain"/>
+            <StatusCode>200</StatusCode>
+            <ReasonPhrase>OK</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

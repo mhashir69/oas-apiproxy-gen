@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <DefaultFaultRule name="default-fault">
+        <Step>
+            <Name>FC_ErrorHandling</Name>
+        </Step>
+        <Step>
+            <Name>FC_Logging</Name>
+        </Step>
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <Flows>
+	{{#if paths}}
+	{{#each paths}}
+     <Flow name="{{keyHttpverb}}  {{keyPath}}">
+     <Description>{{description}}</Description>
+     <Request/>
+     <Response/>
+     <Condition>(proxy.pathsuffix MatchesPath "{{keyPath}}") and (request.verb = "{{loud keyHttpverb}}" )</Condition>
+   </Flow>
+    {{/each}}
+	{{/if}}
+	</Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/{{basepath}}</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

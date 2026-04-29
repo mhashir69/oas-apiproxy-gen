@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="6" name="{{proxyname}}">
+    <Basepaths>/{{basepath}}</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1593109585878</CreatedAt>
+    <CreatedBy>abc@xyz.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>{{proxyname}}</DisplayName>
+    <LastModifiedAt>1593109585879</LastModifiedAt>
+    <LastModifiedBy>abc@xyz.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:751e9de700e8df17e0e07dedf83e30bebd54997fe44fe129b1de9d3197569272dfaf62953e9aae7e740ca5a164cab9be689c02f4b3a53578ac681e89f1688da2</ManifestVersion>
+    <Policies>
+        <Policy>FC_ErrorHandling</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

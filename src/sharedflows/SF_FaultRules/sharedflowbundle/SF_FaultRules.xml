@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="29" name="SF_FaultRules">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1589300946888</CreatedAt>
+    <CreatedBy>mehedi.hashir@accenture.com</CreatedBy>
+    <Description>Common Fault Handling Rules </Description>
+    <DisplayName>SF_FaultRules</DisplayName>
+    <LastModifiedAt>1603814144965</LastModifiedAt>
+    <LastModifiedBy>mehedi.hashir@accenture.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:447afc19f90492b729049e10691920613fe23d3d43b0227bd87b08050801ca5dcb40bc3e2a96f4c866f9e5749c030bf31e2d961ed361e6165024adb5bc64ea53</ManifestVersion>
+    <Policies>
+        <Policy>AM-ErrorMsg-LMP</Policy>
+        <Policy>AM-ErrorMsg-text</Policy>
+        <Policy>AM-ErrorMsg</Policy>
+        <Policy>AM-GenericErrorMsg</Policy>
+        <Policy>OPTIONS-CORS-RequestHeader-Origin</Policy>
+        <Policy>RaiseFault.Json.Generic</Policy>
+        <Policy>RaiseFault.Json</Policy>
+        <Policy>RaiseFault.OPTIONS.CORS-Headers-Response</Policy>
+        <Policy>RaiseFault.Text</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

@@ -1,0 +1,38 @@
+openapi: 3.0.1
+info:
+  version: '1.0-oas3'
+  title: Dummy
+  description: A dummy OpenAPI definition 
+
+servers:
+  - url: https://dummy.org
+paths:
+  # New operations for parsing time
+  /:
+    get:
+      summary: The current time, in a variety of formats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  now:
+                    $ref: '#/components/schemas/Timestamp'
+                  urls:
+                    type: array
+                    items:
+                      type: string
+components:
+  schemas:                      
+    Timestamp:
+      type: object
+      properties:
+        epoch:
+          type: number
+          format: double
+          example: 1498229228.0671656
+                     
+                   

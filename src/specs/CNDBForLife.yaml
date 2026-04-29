@@ -1,0 +1,62 @@
+openapi: 3.0.1
+info:
+  version: '1.0-oas3'
+  title: THE INTERNET CHUCK NORRIS DATABASE
+  description: Notnig more need be said
+
+servers:
+  - url: https://api.icndb.com
+  - url: https://amer-mint-partner06-dev.apigee.net/gen-cndb
+paths:
+  # New operations for parsing time
+  /categories:
+    get:
+      summary: |
+        Ask nicely and you shall receive
+      parameters:
+        - $ref: '#/components/parameters/freeFormQuery'
+      responses:
+        '200':  # Change to 'default' ???
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object      
+  /jokes/random:
+    get:
+      summary: |
+        Its all random
+      parameters:
+        - $ref: '#/components/parameters/freeFormQuery'
+      responses:
+        '200':  # Change to 'default' ???
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                   
+security:
+  - bearerAuth: []                   
+  
+components:
+  securitySchemes:
+    bearerAuth:             
+      type: http
+      scheme: bearer
+      bearerFormat: JWT  
+  parameters:
+    freeFormQuery:
+      name: freeform
+      in: query
+      schema:
+        type: object
+        additionalProperties: true
+      # This is the default serialization method, so it can be omitted
+      style: form
+      explode: true
+      description: >
+        Enter free-form query parameters in the JSON format
+        `{ "param1": "value1", "param2": "value2", ... }`.      
+                     
+                   
