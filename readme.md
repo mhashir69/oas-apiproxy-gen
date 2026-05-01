@@ -27,7 +27,8 @@
 
 -   [To run in WSL](#to-run-in-wsl)
 
--   [To deploy and test generated proxies](#to-deploy-and-test-generated-proxies]
+-   [To deploy and test generated
+    proxies](#to-deploy-and-test-generated-proxies)(#to-deploy-and-test-generated-proxies)
 
 In the general case, API Proxies code deployed on the API Platform support the
 non-functional requirements of APIs. These include security , routing,
