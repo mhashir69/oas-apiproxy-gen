@@ -35,9 +35,10 @@ This tool generates proxy code using the following inputs:
 (3) an input JSON message containing values for template variable substitution
 and other metadata such as the proxy name.
 
-ApigeeProxyGeneration.md
+(4) config.propeties which specifies the location of the file and directories
+for above
 
-![](media/cc4830e7e9ffb8ebbd2a4393029ab6a7.png)
+![](media/a296dfd2e81dfcea49ff1e8331d8bd2d.png)
 
 ### To install
 
@@ -48,16 +49,14 @@ Clone repo to your desktop
 You will always run commands from the \\oas-apiproxy-gen\\src\\specToProxy
 folder.
 
-1.  ./proxybuild.sh
+1.  node main.js
 
-2.  node main.js
-
-3.  Input files , openApi spec, templates in template folder and value to use to
+2.  Input files , openApi spec, templates in template folder and value to use to
     build proxy (more detailed explanation further down in the document)
 
-    1.  oas-apiproxy-gen\\src\\specs\\**petstore.yaml**
+    1.  oas-apiproxy-gen\\src\\**specs**\\petstore.yaml
 
-    2.  oas-apiproxy-gen\\src\\specToProxy\\templates\\**Template-V3-fh-sec-rt-eh-lg**
+    2.  oas-apiproxy-gen\\src\\specToProxy\\**templates**\\Template-V3-fh-sec-rt-eh-lg
 
     3.  oas-apiproxy-gen\\src\\specToProxy\\resources\\**proxytobuild.json**
 
@@ -81,17 +80,20 @@ This code is tested on a Windows Subsystem for Linux.
 
 >   v20.20.2
 
-**npm list** \@apidevtools/swagger-parser handlebars lodash --depth=0
+npm list \@apidevtools/swagger-parser handlebars lodash fs-extra
+properties-reader --depth=0
 
->   oas-apiproxy-gen\@1.0.0
+├── \@apidevtools/swagger-parser\@12.1.0
 
->   ├── \@apidevtools/swagger-parser\@12.1.0
+├── fs-extra\@11.3.4
 
->   ├── handlebars\@4.7.9
+├── handlebars\@4.7.9
 
->   └── <lodash@4.18.1>
+├── lodash\@4.18.1
 
-Use npm install or upgrade to install the lhese version or the latest ones
+└── <properties-reader@3.0.1>
+
+Use npm install or upgrade to install the tshese version or the latest ones
 
 \$ **jq --version**
 
@@ -103,6 +105,9 @@ Use npm install or upgrade to install the lhese version or the latest ones
 
 ### Paths
 
+Please note , the latest version of the code retrieve paths from
+**config.properties** , the folder structure can be modified as needed.
+
 src
 
 ├── gateway **contains generated proxy code**
@@ -111,7 +116,7 @@ src
 
 ├── specs **contains openAPI specs**
 
-├── specToProxy
+├── **specToProxy application folder structure**
 
 │ ├── hbs
 
@@ -127,12 +132,11 @@ src
 
 #### Proxytobuild.json
 
-Json messages, each json message is formatted and stored as a single line. For
-each proxy to build there will be a single line in the file.
+An Array of json messages, one item in the array for each proxy to build.
 
 See explainer
 
-{
+[{
 
 "proxyname": "Gen-httpbin", **Name of proxy to build and is written to the
 Gateway folder show in the structure above**
@@ -148,9 +152,12 @@ will be replaced with this value**
 "openapispecfile": "httpbin.yaml" **openApi spec file is read from the specs
 folder**
 
-}
+}]
 
 #### Template Files
+
+This should be familiar to you , this is the same folder structure as for an API
+proxy file
 
 The folder structure the proxy template files are stored in
 
@@ -242,22 +249,22 @@ https://handlebarsjs.com/
 
 \<Flows\>
 
-{{\#if paths}} {{\#each paths}} // for each uri path
+**{{\#if paths}} {{\#each paths}} // for each uri path**
 
-\<Flow name="{{keyHttpverb}} {{keyPath}}"\>
+**\<Flow name="{{keyHttpverb}} {{keyPath}}"\>**
 
-\<Description\>{{description}}\</Description\>
+**\<Description\>{{description}}\</Description\>**
 
-\<Request/\>
+**\<Request/\>**
 
-\<Response/\>
+**\<Response/\>**
 
-\<Condition\>(proxy.pathsuffix MatchesPath "{{keyPath}}") and (request.verb =
-"{{loud keyHttpverb}}" )\</Condition\>
+**\<Condition\>(proxy.pathsuffix MatchesPath "{{keyPath}}") and (request.verb =
+"{{loud keyHttpverb}}" )\</Condition\>**
 
-\</Flow\>
+**\</Flow\>**
 
-{{/each}} {{/if}} // for each uri path
+**{{/each}} {{/if}} // for each uri path**
 
 \</Flows\>
 
@@ -269,21 +276,21 @@ https://handlebarsjs.com/
 
 >   \</PostFlow\>
 
-\<HTTPProxyConnection\>
+>   \<HTTPProxyConnection\>
 
-\<BasePath\>/{{basepath}}\</BasePath\>
+>   \<BasePath\>/{{basepath}}\</BasePath\>
 
-\<VirtualHost\>secure\</VirtualHost\>
+>   \<VirtualHost\>secure\</VirtualHost\>
 
-\</HTTPProxyConnection\>
+>   \</HTTPProxyConnection\>
 
-\<RouteRule name="default"\>
+>   \<RouteRule name="default"\>
 
-\<TargetEndpoint\>default\</TargetEndpoint\>
+>   \<TargetEndpoint\>default\</TargetEndpoint\>
 
-\</RouteRule\>
+>   \</RouteRule\>
 
-\</ProxyEndpoint\>
+>   \</ProxyEndpoint\>
 
 #### specs folder
 
@@ -293,28 +300,47 @@ Is just that, Openapi files either swagger 2.0 or swagger 3.x
 
 Change to directory **specToProxy**
 
-**src/specToProxy\$ ./proxybuild.sh**
-
->   Start: /mnt/c/Users/abcd/Documents/apigeeWS/apigeeWS/src/specToProxy
-
->   ProxyName: petStore \| TemplateName: Template-V3-fh-sec-rt-eh
-
->   ProxyName: Gen-httpbin \| TemplateName: Template-V3-fh-sec-rt-eh
-
-**src/specToProxy\$ node main.js**
+/apigeeWS/oas-apiproxy-gen/src/specToProxy**\$ node main.js**
 
 >   Using Swagger Parser Version: Latest/ESM
 
->   Starting Proxy Build Process...
+>   Starting Proxy Build Automation...
 
->   Building proxy: petStore
+>   Checking config at:
+>   /apigeeWS/oas-apiproxy-gen/src/specToProxy/config.properties
 
->   Template Name: Template-V3-fh-sec-rt-eh
+>   \--- Properties Found ---
 
->   Processing directory: ../../src/gateway/petStore
+>   Key: [paths.JSON_FILE] \| Value: [./resources/proxytobuild.json]
 
->   API name: Swagger Petstore - OpenAPI 3.1, Version: 1.0.12
+>   Key: [paths.TEMPLATE_DIR] \| Value: [./templates]
 
->   Successfully updated 5 files.
+>   Key: [paths.TARGET_BASE] \| Value: [../../src/gateway]
 
->   Finished proxy: petStore
+>   \------------------------
+
+>   Root Directory: /mnt/c/apigeeWS/oas-apiproxy-gen/src/specToProxy
+
+>   Processing: petStore (Template: Template-V3-fh-sec-rt-eh)
+
+>   Processing directory:
+>   /apigeeWS/apigeeWS/oas-apiproxy-gen/src/gateway/petStore
+
+>   **API name: Swagger Petstore - OpenAPI 3.1, Version: 1.0.12**
+
+>   Successfully updated 6 files.
+
+>   Successfully completed build for: petStore
+
+>   Processing: Gen-httpbin (Template: Template-V3-fh-sec-rt-eh)
+
+>   Processing directory:
+>   /mnt/c/Users/mhash/Documents/apigeeWS/apigeeWS/oas-apiproxy-gen/src/gateway/Gen-httpbin
+
+>   **API name: httpbin, Version: 1.0-oas3**
+
+>   Successfully updated 6 files.
+
+>   Successfully completed build for: Gen-httpbin
+
+>   Entire build process finished successfully.

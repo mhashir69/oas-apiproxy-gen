@@ -1,6 +1,3 @@
-Apigee API Proxy Generation based on templates
-==============================================
-
 Apigee API Proxy Generation based on Templates
 ----------------------------------------------
 
@@ -14,11 +11,11 @@ Apigee API Proxy Generation based on Templates
 
 -   [Input files](#input-files)
 
--   [proxytobuild.json](#proxytobuild.json)
+    -   [proxytobuild.json](#proxytobuild.json)
 
--   [Template Files](#template-files)
+    -   [Template Files](#template-files)
 
--   [Specs folder](#specs-folder)
+    -   [Specs folder](#specs-folder)
 
 ### Execution
 
@@ -35,8 +32,8 @@ This tool generates proxy code using the following inputs:
 (3) an input JSON message containing values for template variable substitution
 and other metadata such as the proxy name.
 
-(4) config.propeties which specifies the location of the file and directories
-for above
+1.  config.propeties which specifies the location of the file and directories
+    for above
 
 ![](media/a296dfd2e81dfcea49ff1e8331d8bd2d.png)
 
@@ -62,7 +59,13 @@ folder.
 
 ### Prerequisite & Versions
 
-This code is tested on a Windows Subsystem for Linux.
+This code is tested on
+
+(1) Windows 11
+
+(2) Windows Subsystem for Linux.
+
+#### WSL(Windows Subsystem on Linux)
 
 \$ **lsb_release -a**
 
@@ -103,6 +106,25 @@ Use npm install or upgrade to install the tshese version or the latest ones
 
 >   sudo apt install jq
 
+#### Windows version
+
+node --version
+
+>   v20.20.2
+
+>   npm list \@apidevtools/swagger-parser handlebars lodash fs-extra
+>   properties-reader --depth=0
+
+>   \+-- \@apidevtools/swagger-parser\@12.1.0
+
+>   \+-- fs-extra\@11.3.4
+
+>   \+-- handlebars\@4.7.9
+
+>   \+-- lodash\@4.18.1
+
+>   \+-- <properties-reader@3.0.1>
+
 ### Paths
 
 Please note , the latest version of the code retrieve paths from
@@ -110,21 +132,21 @@ Please note , the latest version of the code retrieve paths from
 
 src
 
-├── gateway **contains generated proxy code**
+├── gateway -- **contains generated proxy code**
 
 ├── sharedflows
 
-├── specs **contains openAPI specs**
+├── specs -- **contains openAPI specs**
 
-├── **specToProxy application folder structure**
+├── **specToProxy -- application folder structure**
 
 │ ├── hbs
 
 │ ├── node_modules
 
-│ ├── resources **contains file proxytobuild.json**
+│ ├── resources -- **contains file proxytobuild.json**
 
-│ ├── templates **contains proxy templates**
+│ ├── templates -- **contains proxy templates**
 
 │ └── utils
 
@@ -157,7 +179,7 @@ folder**
 #### Template Files
 
 This should be familiar to you , this is the same folder structure as for an API
-proxy file
+proxy file.
 
 The folder structure the proxy template files are stored in
 
@@ -207,7 +229,7 @@ variable which will be replaced with values from Proxytobuild.json file**
 
 >   \</project\>
 
-Another file
+**Another file**
 
 **\\apiproxy\\proxies\\default.xml**
 
@@ -296,37 +318,24 @@ https://handlebarsjs.com/
 
 Is just that, Openapi files either swagger 2.0 or swagger 3.x
 
+### To run in Windows
+
 ### To run in WSL
 
 Change to directory **specToProxy**
 
-/apigeeWS/oas-apiproxy-gen/src/specToProxy**\$ node main.js**
+oas-apiproxy-gen\\src\\spectoproxy\> **node main.js**
 
 >   Using Swagger Parser Version: Latest/ESM
 
 >   Starting Proxy Build Automation...
 
->   Checking config at:
->   /apigeeWS/oas-apiproxy-gen/src/specToProxy/config.properties
-
->   \--- Properties Found ---
-
->   Key: [paths.JSON_FILE] \| Value: [./resources/proxytobuild.json]
-
->   Key: [paths.TEMPLATE_DIR] \| Value: [./templates]
-
->   Key: [paths.TARGET_BASE] \| Value: [../../src/gateway]
-
->   \------------------------
-
->   Root Directory: /mnt/c/apigeeWS/oas-apiproxy-gen/src/specToProxy
-
 >   Processing: petStore (Template: Template-V3-fh-sec-rt-eh)
 
 >   Processing directory:
->   /apigeeWS/apigeeWS/oas-apiproxy-gen/src/gateway/petStore
+>   C:\\Users\\abcd\\Documents\\apigeeWS\\apigeeWS\\oas-apiproxy-gen\\src\\gateway\\petStore
 
->   **API name: Swagger Petstore - OpenAPI 3.1, Version: 1.0.12**
+>   API name: Swagger Petstore - OpenAPI 3.1, Version: 1.0.12
 
 >   Successfully updated 6 files.
 
@@ -335,9 +344,9 @@ Change to directory **specToProxy**
 >   Processing: Gen-httpbin (Template: Template-V3-fh-sec-rt-eh)
 
 >   Processing directory:
->   /mnt/c/Users/mhash/Documents/apigeeWS/apigeeWS/oas-apiproxy-gen/src/gateway/Gen-httpbin
+>   C:\\Users\\mhash\\Documents\\apigeeWS\\apigeeWS\\oas-apiproxy-gen\\src\\gateway\\Gen-httpbin
 
->   **API name: httpbin, Version: 1.0-oas3**
+>   API name: httpbin, Version: 1.0-oas3
 
 >   Successfully updated 6 files.
 
