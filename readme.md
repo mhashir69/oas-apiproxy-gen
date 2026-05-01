@@ -27,6 +27,8 @@
 
 -   [To run in WSL](#to-run-in-wsl)
 
+-   [To deploy and test generated proxies](#to-deploy-and-test-generated-proxies]
+
 In the general case, API Proxies code deployed on the API Platform support the
 non-functional requirements of APIs. These include security , routing,
 logging,auditing etc . The API proxy code is repetitive and pattern-based,
@@ -394,7 +396,7 @@ Change to directory **specToProxy**
 
 >   Entire build process finished successfully.
 
-### To deploy and test this code
+### To deploy and test generated proxies
 
 Since both these templates use the shared flow SC-FaultRules build and deploy
 that first. The manual steps are z
