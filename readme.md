@@ -1,23 +1,29 @@
-Apigee API Proxy Generation based on Templates
-----------------------------------------------
+-   [Apigee API Proxy Generation based on
+    Templates](#apigee-api-proxy-generation-based-on-templates)
+
+-   [Project Structure](#project-structure)
+
+-   [Execution](#execution)
 
 -   [To install](#to-install)
 
--   [Prerequisite & Versions](#prerequisite-versions)
+    -   [Prerequisite & Versions](#prerequisite--versions)
 
-### Project Structure
+    -   [WSL (Windows Subsystem on Linux)](#wsl-windows-subsystem-on-linux)
+
+    -   [Windows version](#windows-version)
 
 -   [Paths](#paths)
 
 -   [Input files](#input-files)
 
-    -   [proxytobuild.json](#proxytobuild.json)
+    -   [Proxytobuild.json](#proxytobuildjson)
 
     -   [Template Files](#template-files)
 
-    -   [Specs folder](#specs-folder)
+    -   [specs folder](#specs-folder)
 
-### Execution
+-   [To run in Windows](#to-run-in-windows)
 
 -   [To run in WSL](#to-run-in-wsl)
 
@@ -53,17 +59,19 @@ folder.
 
     1.  oas-apiproxy-gen\\src\\**specs**\\petstore.yaml
 
-    2.  oas-apiproxy-gen\\src\\specToProxy\\**templates**\\Template-V3-fh-sec-rt-eh-lg
+    2.  oas-apiproxy-gen\\src\\specToProxy\\**config.properties**
 
-    3.  oas-apiproxy-gen\\src\\specToProxy\\resources\\**proxytobuild.json**
+    3.  oas-apiproxy-gen\\src\\specToProxy\\**templates**\\Template-V3-fh-sec-rt-eh-lg
+
+    4.  oas-apiproxy-gen\\src\\specToProxy\\resources\\**proxytobuild.json**
 
 ### Prerequisite & Versions
 
 This code is tested on
 
-(1) Windows 11
+1.  Windows 11
 
-(2) Windows Subsystem for Linux.
+2.  Windows Subsystem for Linux.
 
 #### WSL(Windows Subsystem on Linux)
 
@@ -320,8 +328,6 @@ Is just that, Openapi files either swagger 2.0 or swagger 3.x
 
 ### To run in Windows
 
-### To run in WSL
-
 Change to directory **specToProxy**
 
 oas-apiproxy-gen\\src\\spectoproxy\> **node main.js**
@@ -353,3 +359,58 @@ oas-apiproxy-gen\\src\\spectoproxy\> **node main.js**
 >   Successfully completed build for: Gen-httpbin
 
 >   Entire build process finished successfully.
+
+### To run in WSL
+
+Change to directory **specToProxy**
+
+/specToProxy\$ node main.js
+
+>   Using Swagger Parser Version: Latest/ESM
+
+>   Starting Proxy Build Automation...
+
+>   Processing: petStore (Template: Template-V3-fh-sec-rt-eh)
+
+>   Processing directory:
+>   /mnt/c/Users/mhash/Documents/apigeeWS/apigeeWS/oas-apiproxy-gen/src/gateway/petStore
+
+>   API name: Swagger Petstore - OpenAPI 3.1, Version: 1.0.12
+
+>   Successfully updated 6 files.
+
+>   Successfully completed build for: petStore
+
+>   Processing: Gen-httpbin (Template: Template-V3-fh-sec-rt-eh)
+
+>   Processing directory:
+>   /mnt/c/Users/mhash/Documents/apigeeWS/apigeeWS/oas-apiproxy-gen/src/gateway/Gen-httpbin
+
+>   API name: httpbin, Version: 1.0-oas3
+
+>   Successfully updated 6 files.
+
+>   Successfully completed build for: Gen-httpbin
+
+>   Entire build process finished successfully.
+
+### To deploy and test this code
+
+Since both these templates use the shared flow SC-FaultRules build and deploy
+that first. The manual steps are z
+
+1.  zip up everything under the folder sharedflowbundle , and import the zip
+    file to create a sharedflow . You will be prompted for a name – use the name
+    SF_Fault rules. You have probably done this many times before, these
+    instructions are just in case
+
+>   "apigeeWS\\oas-apiproxy-gen\\src\\sharedflows\\SF_FaultRules\\**sharedflowbundle**"
+
+1.  Do the same for the generated flows, in the samples provided, these are the
+    two generated API Proxies – again similar process, zip up the files under
+    api proxy , import zip file to create a proxy in the management UI and
+    deploy.
+
+>   " \\apigeeWS\\oas-apiproxy-gen\\src\\gateway\\**Gen-httpbin\\apiproxy**"
+
+>   " \\apigeeWS\\oas-apiproxy-gen\\src\\gateway\\**petStore\\apiproxy**"
