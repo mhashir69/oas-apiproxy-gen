@@ -1,48 +1,18 @@
 // main.js
-import path from 'path';
-import fs from 'fs';
-import readline from 'readline';
-import { writeFiles } from './utils/writeFiles.js';
+import { runProxyBuild } from './utils/runProxyBuild.js';
 
-const buildproxyfile = './resources/proxytobuild.json';
-
-async function ProxyBuild(filePath) {
-  // Create a stream to read the file line by line
-  const fileStream = fs.createReadStream(filePath);
-
-  const rl = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity
-  });
-
-  console.log("Starting Proxy Build Process...");
-
-  // Use for-await...of to respect the asynchronous writeFiles call
-  for await (const line of rl) {
-    if (!line.trim()) continue; // Skip empty lines
+async function init() {
+    console.log("Starting Proxy Build Automation...");
 
     try {
-      const buildvalues = JSON.parse(line);
-      console.log(`Building proxy: ${buildvalues.proxyname}`);
-      console.log(`Template Name: ${buildvalues.templatename}`);
-
-      // Define the target directory
-      const dir = `../../src/gateway/${buildvalues.proxyname}`;
-
-      // CRITICAL: We now await the write process before moving to the next line
-      await writeFiles(dir, buildvalues);
-
-      console.log(`Finished proxy: ${buildvalues.proxyname}`);
+        // This now handles properties, the loop, copying, and writeFiles calls
+        await runProxyBuild('./config.properties');
+        
+        console.log("Entire build process finished successfully.");
     } catch (err) {
-      console.error(`Error processing line: ${line}`);
-      console.error(err);
+        console.error("Global Build Error:", err.message);
+        process.exit(1);
     }
-  }
-
-  console.log("All proxies processed successfully.");
 }
 
-// Execute the async function
-ProxyBuild(buildproxyfile).catch(err => {
-  console.error("Global Build Error:", err);
-});
+init();

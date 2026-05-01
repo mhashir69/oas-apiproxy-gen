@@ -1,2 +1,16 @@
-{ "proxyname": "petStore", "templatename": "Template-V3-fh-sec-rt-eh", "basepath": "petstore", "urltarget": "https://petstore3.swagger.io", "openapispecfile": "petstore.yaml" }
-{"proxyname" : "Gen-httpbin", "templatename" : "Template-V3-fh-sec-rt-eh", "basepath" : "gen-httpbin", "urltarget" : "https://httpbin.org" , "openapispecfile" :"httpbin.yaml" }
+[
+  {
+    "proxyname": "petStore",
+    "templatename": "Template-V3-fh-sec-rt-eh",
+    "basepath": "petstore",
+    "urltarget": "https://petstore3.swagger.io",
+    "openapispecfile": "petstore.yaml"
+  },
+  {
+    "proxyname": "Gen-httpbin",
+    "templatename": "Template-V3-fh-sec-rt-eh",
+    "basepath": "gen-httpbin",
+    "urltarget": "https://httpbin.org",
+    "openapispecfile": "httpbin.yaml"
+  }
+]
