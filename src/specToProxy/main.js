@@ -7,6 +7,7 @@ async function init() {
     try {
         // This now handles properties, the loop, copying, and writeFiles calls
         await runProxyBuild('./config.properties');
+
         
         console.log("Entire build process finished successfully.");
     } catch (err) {

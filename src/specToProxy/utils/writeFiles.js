@@ -4,7 +4,7 @@ import { applyhbs } from '../hbs/applyhbs.js';
 import { specparse } from '../utils/specparse.js';
 import { getFilesPath } from './getFiles.js';
 
-export async function writeFiles(dir, buildvalues) {
+export async function writeFiles(dir, buildvalues,SPECS_DIR) {
   console.log(`Processing directory: ${dir}`);
 
   // 1. Get all file paths recursively
@@ -14,6 +14,7 @@ export async function writeFiles(dir, buildvalues) {
   let routesjson = null;
   if (buildvalues.openapispecfile !== 'dummy.yaml') {
     const specfile = `../specs/${buildvalues.openapispecfile}`;
+    //const specfile = `${SPECS_DIR}/${buildvalues.openapispecfile}`;
     const routes = await specparse(specfile);
     routesjson = JSON.parse(JSON.stringify(routes));
     routesjson['basepath'] = buildvalues.basepath;

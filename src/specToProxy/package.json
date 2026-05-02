@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "OAS to Apigee Proxy Tool",
   "type": "module",
-  "main": "main.js",
+  "main": "specToProxy/main.js",
   "dependencies": {
     "@apidevtools/swagger-parser": "^12.1.0",
     "fs-extra": "^11.3.4",
@@ -13,5 +13,9 @@
   },
   "scripts": {
     "start": "node main.js"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

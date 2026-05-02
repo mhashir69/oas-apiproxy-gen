@@ -4,7 +4,7 @@ import propertiesReader from 'properties-reader';
 import { writeFiles } from './writeFiles.js';
 
 export async function runProxyBuild(configPath = './config.properties') {
-    //console.log(`Checking config at: ${path.resolve(configPath)}`);
+    console.log(`Checking config at: ${path.resolve(configPath)}`);
     if (!fs.existsSync(configPath)) {
     console.error("The config.properties file was not found at that path!");
     }    
@@ -19,12 +19,12 @@ export async function runProxyBuild(configPath = './config.properties') {
     properties.read(rawContent);
 
     // DIAGNOSTIC LOOP
-    /* console.log("--- Properties Found ---");
+     console.log("--- Properties Found ---");
     properties.each((key, value) => {
         console.log(`Key: [${key}] | Value: [${value}]`);
     });
     console.log("------------------------"); 
-    */
+    
     
     // This gets the directory where main.js (the entry point) lives
     const rootDir = process.cwd();
@@ -32,6 +32,7 @@ export async function runProxyBuild(configPath = './config.properties') {
     // Values retrieved from properties file
     const JSON_PATH = properties.get('paths.JSON_FILE');
     const TEMPLATE_DIR = properties.get('paths.TEMPLATE_DIR');
+    const SPECS_DIR = properties.get('paths.SPECS_DIR');
     const TARGET_BASE = properties.get('paths.TARGET_BASE');
     
 
