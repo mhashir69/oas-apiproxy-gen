@@ -1,0 +1,21 @@
+{
+  "name": "oas-apiproxy-gen",
+  "version": "1.0.0",
+  "description": "OAS to Apigee Proxy Tool",
+  "type": "module",
+  "main": "specToProxy/main.js",
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^12.1.0",
+    "fs-extra": "^11.3.4",
+    "handlebars": "^4.7.9",
+    "lodash": "^4.17.21",
+    "properties-reader": "^3.0.1"
+  },
+  "scripts": {
+    "start": "node main.js"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

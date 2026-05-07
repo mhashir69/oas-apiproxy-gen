@@ -27,7 +27,8 @@
 
 -   [To run in WSL](#to-run-in-wsl)
 
--   [To deploy and test generated proxies](#to-deploy-and-test-generated-proxies)
+-   [To deploy and test generated
+    proxies](#to-deploy-and-test-generated-proxies)
 
 In the general case, API Proxies code deployed on the API Platform support the
 non-functional requirements of APIs. These include security , routing,
@@ -38,12 +39,12 @@ This tool generates proxy code using the following inputs:
 (1) an OpenAPI specification,  
 (2) a proxy template, and  
 (3) an input JSON message containing values for template variable substitution
-and other metadata such as the proxy name.
+and other metadata such as the proxy name , and
 
-1.  config.propeties which specifies the location of the file and directories
-    for above
+(4) config.propeties which specifies the location of the input and output files
+and directories for above
 
-![](media/a296dfd2e81dfcea49ff1e8331d8bd2d.png)
+![](media/20ed37357fecea9bf163126e1a4b216d.png)
 
 ### To install
 
@@ -93,28 +94,20 @@ This code is tested on
 
 >   v20.20.2
 
-npm list \@apidevtools/swagger-parser handlebars lodash fs-extra
-properties-reader --depth=0
+>   npm list \@apidevtools/swagger-parser handlebars lodash fs-extra
+>   properties-reader --depth=0
 
-├── \@apidevtools/swagger-parser\@12.1.0
+>   ├── \@apidevtools/swagger-parser\@12.1.0
 
-├── fs-extra\@11.3.4
+>   ├── fs-extra\@11.3.4
 
-├── handlebars\@4.7.9
+>   ├── handlebars\@4.7.9
 
-├── lodash\@4.18.1
+>   ├── lodash\@4.18.1
 
-└── <properties-reader@3.0.1>
+>   └── <properties-reader@3.0.1>
 
-Use npm install or upgrade to install the tshese version or the latest ones
-
-\$ **jq --version**
-
->   jq-1.6
-
->   Note: install jq on WSL
-
->   sudo apt install jq
+Use npm install or upgrade to install these version or the latest ones
 
 #### Windows version
 
@@ -386,7 +379,7 @@ Change to directory **specToProxy**
 >   Processing: Gen-httpbin (Template: Template-V3-fh-sec-rt-eh)
 
 >   Processing directory:
->   /mnt/c/Users/mhash/Documents/apigeeWS/apigeeWS/oas-apiproxy-gen/src/gateway/Gen-httpbin
+>   /mnt/c/Users/abcd/Documents/apigeeWS/apigeeWS/oas-apiproxy-gen/src/gateway/Gen-httpbin
 
 >   API name: httpbin, Version: 1.0-oas3
 
